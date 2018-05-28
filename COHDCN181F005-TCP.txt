@@ -1,0 +1,16 @@
+from ctypes import *
+import struct
+
+class TCP(Structure):
+    _fields_=[
+        ("src", c_ushort),
+        ("desti", c_ushort),
+        ("seq_num", c_long),
+        ("ackk_num", c_long),
+        ("offset", c_ubyte, 4),
+        ("reser", c_ubyte, 4),
+        ("flg",  c_ubyte),
+        ("wind", c_ushort),
+        ("checksum", c_ushort),
+        ("urg_point", c_ushort),
+       ]

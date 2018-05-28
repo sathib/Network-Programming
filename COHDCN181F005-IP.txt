@@ -1,0 +1,24 @@
+from ctypes import *
+import struct
+
+class IP(Structure):
+    _fields_=[
+        ("ver", c_ubyte, 4),
+        ("ihl", c_ubyte, 4),
+        ("tos", c_ubyte),
+        ("leng", c_ushort),
+        ("ident", c_ushort),
+        ("ofst", c_ushort),
+        ("ttl",  c_ubyte),
+        ("prtcl", c_ubyte),
+        ("chcksum", c_ushort),
+        ("src", c_long),
+        ("desti", c_long)
+       ]
+
+    def __new__(self, socket_buffer = None):
+        return self.from_buffer_copy(socket_buffer)
+
+    def __init__(self, socket_buffer = None):
+        self.src_address = socket.inet_ntoa(struct.pack("@I", self.src))
+        self.dest_address = socket.inet_ntoa(struct.pack("@I", self.desti)

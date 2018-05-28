@@ -1,0 +1,10 @@
+from ctypes import *
+import struct
+
+class UDP(Structure):
+    _fields_=[
+        ("src", c_ushort),
+        ("desti", c_ushort),
+        ("len", c_short),
+        ("chcksum", c_short),
+       ]
